@@ -16,13 +16,17 @@ int main(void)
    if (fd == -1)
  {
    printf("Error opening file");
-  return (1);
+    return (1);
  }
-  while (i < 2)
+
+  while (i < 30)
   {
     next_line = get_next_line(fd);
     if (next_line == NULL)
-      break ;
+    {
+      break;
+    }
+
     count++;
     printf("[%d]:%s\n", count, next_line);
 

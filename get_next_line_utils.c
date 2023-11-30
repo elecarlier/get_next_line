@@ -6,13 +6,13 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:40:56 by ecarlier          #+#    #+#             */
-/*   Updated: 2023/11/28 20:38:31 by ecarlier         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:33:47 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	size_t	len;
 	char	*dest;
@@ -20,8 +20,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	dest = malloc(sizeof(char) * len);
 	if (!dest)
+	{
+		if (s1)
+			free(s1);
 		return (NULL);
+	}
+	dest[len - 1] = '\0';
 	ft_strlcpy(dest, s1, ft_strlen(s1) + 1);
+	if (s1)
+		free(s1);
 	ft_strlcat(dest, s2, len);
 	return (dest);
 }
