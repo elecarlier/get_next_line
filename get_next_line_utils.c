@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:40:56 by ecarlier          #+#    #+#             */
-/*   Updated: 2023/11/30 15:33:47 by ecarlier         ###   ########.fr       */
+/*   Updated: 2023/11/30 21:34:18 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ char	*ft_strdup(const char *s)
 	size_t	i;
 	char	*dest;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	len = ft_strlen(s) + 1;
 	dest = malloc(sizeof(char) * len);

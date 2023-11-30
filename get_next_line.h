@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:44:23 by ecarlier          #+#    #+#             */
-/*   Updated: 2023/11/30 15:24:37 by ecarlier         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:59:05 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 
 char	*get_next_line(int fd);
-char	*fill_line(int fd, char **line);
+char	*fill_line(int fd, char *line);
 char	*set_left(char *line);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char const *s2);

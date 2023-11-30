@@ -1,38 +1,20 @@
-#include <stdio.h>
-#include <fcntl.h>
 #include "get_next_line.h"
+#include "stdio.h"
+#include <fcntl.h>
 
-int main(void)
+int	main(void)
 {
-  int    fd;
-  char  *next_line;
-  int  count;
-  int i;
+	int		fd;
+	char	*nextline;
 
-  i = 0;
-
-  count = 0;
-  fd = open("text.txt", O_RDONLY);
-   if (fd == -1)
- {
-   printf("Error opening file");
-    return (1);
- }
-
-  while (i < 30)
-  {
-    next_line = get_next_line(fd);
-    if (next_line == NULL)
-    {
-      break;
-    }
-
-    count++;
-    printf("[%d]:%s\n", count, next_line);
-
-    next_line = NULL;
-    i++;
-  }
-  close(fd);
-  return (0);
+	fd = open("text.txt", O_RDONLY);
+	nextline = get_next_line(fd);
+	while (nextline)
+	{
+		printf("%s", nextline);
+		free(nextline);
+		nextline = get_next_line(fd);
+	}
+	close(fd);
+	return (0);
 }
