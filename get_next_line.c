@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:38:17 by ecarlier          #+#    #+#             */
-/*   Updated: 2023/11/30 21:27:53 by ecarlier         ###   ########.fr       */
+/*   Updated: 2023/11/30 21:41:52 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ char	*set_left(char *line)
 	if (next++ == NULL)
 		return (NULL);
 	surplus = ft_strdup(next);
+	if (!surplus)
+		return (NULL);
 	*next = '\0';
 
 	return (surplus);

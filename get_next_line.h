@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:44:23 by ecarlier          #+#    #+#             */
-/*   Updated: 2023/11/30 15:59:05 by ecarlier         ###   ########.fr       */
+/*   Updated: 2023/11/30 22:11:08 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# include <unistd.h>
-# include <stdlib.h>
 # include <stddef.h>
-
+# include <stdlib.h>
+# include <unistd.h>
 
 char	*get_next_line(int fd);
 char	*fill_line(int fd, char *line);
