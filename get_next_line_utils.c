@@ -6,7 +6,7 @@
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 15:40:56 by ecarlier          #+#    #+#             */
-/*   Updated: 2023/11/30 22:05:40 by ecarlier         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:32:33 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ char	*ft_strjoin(char *s1, char const *s2)
 	}
 	dest[len - 1] = '\0';
 	ft_strlcpy(dest, s1, ft_strlen(s1) + 1);
+	ft_strlcat(dest, s2, len);
 	if (s1)
 		free(s1);
-	ft_strlcat(dest, s2, len);
 	return (dest);
 }
 
