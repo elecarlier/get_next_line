@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarlier <ecarlier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 15:38:17 by ecarlier          #+#    #+#             */
-/*   Updated: 2023/12/07 18:26:42 by ecarlier         ###   ########.fr       */
+/*   Created: 2023/12/07 18:25:25 by ecarlier          #+#    #+#             */
+/*   Updated: 2023/12/07 18:37:24 by ecarlier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*leftover;
+	static char	*leftover[OPEN_MAX];
 	char		*line;
 
-	line = fill_line(fd, leftover);
-	leftover = set_left(line);
+	if (fd < 0 || fd >= OPEN_MAX)
+		return (NULL);
+	line = fill_line(fd, leftover[fd]);
+	leftover[fd] = set_left(line);
 	if (line == NULL)
 		return (NULL);
 	return (line);
@@ -26,11 +28,12 @@ char	*get_next_line(int fd)
 
 char	*fill_line(int fd, char *line)
 {
-	static char	buffer[BUFFER_SIZE +1];
-	int			bytes_read;
+	char	*buffer;
+	int		bytes_read;
 
-	if (fd < 0)
-		return (NULL);
+	buffer = malloc(sizeof(char) * BUFFER_SIZE +1);
+	if (!buffer)
+		free(buffer);
 	while (!ft_strchr(line, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
@@ -38,12 +41,14 @@ char	*fill_line(int fd, char *line)
 			break ;
 		if (bytes_read == -1)
 		{
+			free(buffer);
 			free(line);
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
 		line = ft_strjoin(line, buffer);
 	}
+	free(buffer);
 	return (line);
 }
 
